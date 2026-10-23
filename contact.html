@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | PullUp</title>
+    
+    <link rel="icon" href="assests/images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+:root{
+    --primary:#0F172A;
+    --secondary:#14532D;
+    --light-green:#22C55E;
+    --emerald:#10B981;
+    --white:#FFFFFF;
+    --gray:#64748B;
+    --border:#E2E8F0;
+    --shadow-sm:0 4px 18px rgba(15,23,42,.06);
+    --shadow-lg:0 20px 50px rgba(15,23,42,.15);
+    --transition:.35s cubic-bezier(0.16, 1, 0.3, 1);
+    --max-width:1200px;
+}
+
+*{ margin:0; padding:0; box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+    font-family:'Manrope',sans-serif;
+    background:#FAFBFC;
+    color:var(--text);
+    line-height:1.7;
+    overflow-x:hidden;
+}
+img{ display:block; max-width:100%; }
+a{ text-decoration:none; color:inherit; }
+ul{ list-style:none; }
+
+.container{ width:min(92%,var(--max-width)); margin:auto; }
+
+.section{ padding:100px 0; }
+
+.section-header{
+    max-width:700px;
+    margin-bottom:70px;
+}
+
+.section-tag{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    color:var(--secondary);
+    background:rgba(34,197,94,0.08);
+    border:1px solid rgba(34,197,94,0.15);
+    padding:6px 14px;
+    border-radius:999px;
+    font-size:.7rem;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    margin-bottom:20px;
+}
+
+.section-header h2{
+    font-family:'Plus Jakarta Sans', 'Manrope', sans-serif;
+    font-size:clamp(2.5rem,6vw,4.2rem);
+    font-weight:800;
+    margin-bottom:20px;
+    color:var(--primary);
+    line-height:1.1;
+    letter-spacing:-0.03em;
+}
+
+.section-header p{ 
+    color:var(--gray); 
+    font-size:1.08rem;
+    line-height:1.7;
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:16px 32px;
+    border-radius:999px;
+    font-weight:700;
+    transition:var(--transition);
+    cursor:pointer;
+    border:none;
+    font-size:1rem;
+    position:relative;
+    overflow:hidden;
+}
+.primary-btn:hover{
+    background:#00bc42;
+   transform:translateY(-2px);
+   color:black;
+}
+
+.primary-btn{
+    background:rgb(5, 74, 5);
+    color:#fff;
+    box-shadow:0 8px 25px rgba(20,83,45,.25), inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+.primary-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 12px 35px rgba(20,83,45,.35), inset 0 1px 0 rgba(255,255,255,0.15);
+}
+
+.primary-btn:hover .arrow-icon{
+    transform:translate(3px, -3px);
+}
+
+.arrow-icon{
+    transition:transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    font-size:18px;
+}
+
+.header{
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:999;
+    backdrop-filter:blur(16px);
+    background:rgba(255,255,255,.75);
+    border-bottom:1px solid rgba(226,232,240,.7);
+}
+
+.navbar{
+    height:85px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo img{ height:56px; }
+
+.nav-links{ display:flex; gap:35px; }
+
+.nav-links a{
+    color:var(--primary);
+    font-weight:600;
+    position:relative;
+    transition:.3s;
+}
+
+.nav-links a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-6px;
+    width:0;
+    height:2px;
+    background:var(--light-green);
+    transition:.3s;
+}
+
+.nav-links a:hover{ color:var(--secondary); }
+.nav-links a:hover::after{ width:100%; }
+
+.hamburger{
+    display:none;
+    background:none;
+    border:none;
+    font-size:2rem;
+    cursor:pointer;
+}
+
+/*========== CONTACT GRID WITH GLASSMORPHISM ==========*/
+
+.contact{
+    padding-top:180px;
+    position:relative;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(16,185,129,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(15,23,42,0.05) 0%, transparent 50%),
+        #FAFBFC;
+}
+
+.contact::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background:
+        linear-gradient(90deg, transparent 0%, rgba(226,232,240,0.3) 50%, transparent 100%),
+        linear-gradient(0deg, transparent 0%, rgba(226,232,240,0.3) 50%, transparent 100%);
+    background-size:80px 80px;
+    opacity:0.4;
+    pointer-events:none;
+}
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:stretch;
+    max-width:1200px;
+    margin:auto;
+    position:relative;
+    z-index:2;
+}
+
+/* LEFT SIDE - TRUST SECTION */
+.contact-info{
+    display:flex;
+    flex-direction:column;
+}
+
+.contact-info .section-header{
+    text-align:left;
+    margin-bottom:35px;
+}
+
+.info-card{
+    background:rgba(255,255,255,0.7);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,0.6);
+    border-radius:24px;
+    padding:30px;
+    box-shadow:0 8px 32px rgba(15,23,42,0.08);
+    flex-grow:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.status-indicator{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:rgba(34,197,94,0.1);
+    border:1px solid rgba(34,197,94,0.2);
+    padding:10px 18px;
+    border-radius:999px;
+    font-size:0.9rem;
+    font-weight:600;
+    color:var(--secondary);
+    margin-bottom:20px;
+    width:fit-content;
+}
+
+.status-dot{
+    width:8px;
+    height:8px;
+    background:#10B981;
+    border-radius:50%;
+    animation:pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot{
+    0%, 100%{ box-shadow:0 0 0 0 rgba(16,185,129,0.7); }
+    50%{ box-shadow:0 0 0 8px rgba(16,185,129,0); }
+}
+
+.info-item{
+    display:flex;
+    align-items:flex-start;
+    gap:15px;
+    margin-bottom:22px;
+}
+
+.info-item:last-child{
+    margin-bottom:0;
+}
+
+.info-icon{
+    width:44px;
+    height:44px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(34,197,94,0.1);
+    border-radius:12px;
+    color:var(--secondary);
+    flex-shrink:0;
+}
+
+.info-content h4{
+    font-size:1rem;
+    font-weight:700;
+    margin-bottom:4px;
+    color:var(--primary);
+}
+
+.info-content p{
+    font-size:0.95rem;
+    color:var(--gray);
+}
+
+.info-content a{
+    color:var(--secondary);
+    font-weight:600;
+    transition:0.3s;
+}
+
+.info-content a:hover{
+    color:var(--emerald);
+}
+
+/* RIGHT SIDE - GLASSMORPHIC FORM */
+.form-wrapper{
+    display:flex;
+    height:100%;
+}
+
+form{
+    background:rgba(255,255,255,0.75);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    padding:50px;
+    border-radius:28px;
+    border:1px solid rgba(255,255,255,0.8);
+    box-shadow:
+        0 20px 60px rgba(15,23,42,0.12),
+        inset 0 1px 0 rgba(255,255,255,0.9);
+    position:relative;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+}
+
+form::before{
+    content:'';
+    position:absolute;
+    top:-1px;
+    left:20%;
+    right:20%;
+    height:1px;
+    background:linear-gradient(90deg, transparent, rgba(16,185,129,0.4), transparent);
+}
+
+.input-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:22px;
+    margin-bottom:22px;
+}
+
+.input-wrapper{
+    position:relative;
+}
+
+.input-wrapper label{
+    position:absolute;
+    left:20px;
+    top:18px;
+    color:var(--gray);
+    font-size:0.95rem;
+    font-weight:500;
+    pointer-events:none;
+    transition:all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-origin:left top;
+}
+
+input,textarea{
+    width:100%;
+    padding:18px 20px;
+    border-radius:14px;
+    border:1px solid rgba(226,232,240,0.6);
+    background:rgba(248,250,252,0.5);
+    outline:none;
+    font-size:1rem;
+    font-family:'Manrope', sans-serif;
+    color:var(--primary);
+    transition:all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+input:focus,
+input:not(:placeholder-shown),
+textarea:focus,
+textarea:not(:placeholder-shown){
+    background:rgba(255,255,255,0.9);
+    border-color:var(--emerald);
+    box-shadow:0 0 0 4px rgba(16,185,129,0.1);
+}
+
+input:focus + label,
+input:not(:placeholder-shown) + label,
+textarea:focus + label,
+textarea:not(:placeholder-shown) + label{
+    transform:translateY(-28px) scale(0.85);
+    color:var(--secondary);
+    font-weight:700;
+}
+
+textarea{ 
+    resize:none; 
+    margin-bottom:28px;
+    min-height:140px;
+}
+
+.success-message{
+    display:none;
+    margin-top:20px;
+    padding:16px 20px;
+    background:rgba(34,197,94,0.1);
+    border:1px solid rgba(34,197,94,0.3);
+    border-radius:12px;
+    color:#16A34A;
+    font-weight:700;
+}
+
+/*========== FOOTER ==========*/
+
+.footer {
+
+    background: #0F172A;
+
+    color: white;
+
+    padding-top: 75px;
+
+}
+
+
+.footer-main {
+
+    display: grid;
+
+    grid-template-columns:
+        1.7fr
+        1fr
+        1fr
+        1.2fr;
+
+    gap: 60px;
+
+    padding-bottom: 65px;
+
+}
+
+
+.footer-logo img {
+
+    height: 55px;
+
+    filter:
+        brightness(0)
+        invert(1);
+
+}
+
+
+.footer-brand p {
+
+    color: #94A3B8;
+
+    max-width: 340px;
+
+    line-height: 1.8;
+
+    margin:
+        22px 0 25px;
+
+}
+
+
+.footer-consultation {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: #86EFAC;
+
+    font-weight: 700;
+
+}
+
+
+.footer-consultation svg {
+
+    width: 17px;
+
+    height: 17px;
+
+}
+
+
+.footer-column {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 14px;
+
+}
+
+
+.footer-column h4 {
+
+    font-size: .85rem;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1.5px;
+
+    color: white;
+
+    margin-bottom: 10px;
+
+}
+
+
+.footer-column a {
+
+    color: #94A3B8;
+
+    font-size: .92rem;
+
+    transition: .3s;
+
+}
+
+
+.footer-column a:hover {
+
+    color: #86EFAC;
+
+    transform:
+        translateX(3px);
+
+}
+
+
+.footer-connect > a {
+
+    word-break: break-word;
+
+}
+
+
+.social-links {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 8px;
+
+}
+
+
+.social-links a {
+
+    width: 40px;
+
+    height: 40px;
+
+    border: 1px solid #334155;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    transition: .3s;
+
+}
+
+
+.social-links a:hover {
+
+    background: var(--green);
+
+    border-color: var(--green);
+
+    color: #052E16;
+
+    transform:
+        translateY(-3px);
+
+}
+
+
+.social-links svg {
+
+    width: 18px;
+
+    height: 18px;
+
+}
+
+
+.footer-bottom {
+
+    border-top: 1px solid #1E293B;
+
+    padding: 25px 0;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+}
+
+
+.footer-bottom p {
+
+    color: #64748B;
+
+    font-size: .82rem;
+
+}
+.social-links .linkedin-link {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    background: transparent;
+    transition: 0.3s ease;
+}
+
+.social-links .linkedin-link svg {
+    width: 30px;
+    height: 30px;
+    display: block;
+    flex-shrink: 0;
+}
+
+.social-links .linkedin-link:hover {
+    background: #22C55E;
+    border-color: #22C55E;
+    transform: translateY(-3px);
+}
+@media(max-width:768px){
+    .nav-links{
+        position:absolute;
+        top:85px;
+        left:0;
+        width:100%;
+        background:#fff;
+        display:flex;
+        flex-direction:column;
+        padding:25px;
+        gap:20px;
+        box-shadow:0 15px 35px rgba(0,0,0,.08);
+        transform:translateY(-150%);
+        transition:.35s;
+    }
+    .nav-links.active{ transform:translateY(0); }
+    .hamburger{ display:block; background:none; border:none; font-size:2rem; cursor:pointer; }
+}
+
+@media(max-width:992px){
+    .footer-grid{ grid-template-columns:1fr 1fr; }
+    .contact-grid{ 
+        grid-template-columns:1fr; 
+        gap:40px;
+    }
+}
+
+@media(max-width:768px){
+    .footer-grid{ grid-template-columns:1fr; text-align:center; }
+    .input-grid{ grid-template-columns:1fr; }
+    form{ padding:35px 25px; }
+    .contact-info .section-header{
+        text-align:center;
+    }
+    .status-indicator{
+        margin-left:auto;
+        margin-right:auto;
+    }
+}
+
+
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1px;
+    flex-shrink: 0;
+}
+
+.logo img {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+}
+
+.brand-name {
+    font-family: "Manrope", sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: 0.15px;
+    color: var(--primary);
+    white-space: nowrap;
+}
+
+.footer-logo {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+}
+
+.footer-logo img {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+}
+
+.footer-brand-name {
+    font-family: "Manrope", sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: 0.15px;
+    color: #FFFFFF;
+    white-space: nowrap;
+}
+
+
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <header class="header">
+
+        <nav class="navbar container">
+
+            
+<a href="index.html" class="logo" aria-label="PullUp Solutions home">
+    <img src="./assests/images/logo.png" alt="PullUp Logo">
+    <span class="brand-name">PullUp Solutions</span>
+</a>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="industries.html">Industries</a></li>
+                <li> <a href="our-work.html">Our Work</a></li>
+                <li><a href="insights.html">Insights</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <a href="contact.html" class="btn primary-btn">Book Consultation</a>
+
+            <button class="hamburger" aria-label="Open Navigation">☰</button>
+
+        </nav>
+
+    </header>
+
+    <section class="contact section" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                
+                <!-- LEFT SIDE - TRUST & INFO -->
+                <div class="contact-info">
+                    <div class="section-header">
+                        <span class="section-tag">• GET IN TOUCH</span>
+                        <h2>Let's Build Your Brand Together</h2>
+                        <p>Schedule a consultation with our advisory team. We're here to help transform your business.</p>
+                    </div>
+
+                    <div class="status-indicator">
+                        <span class="status-dot"></span>
+                        Advisory Team: Online & Accepting Clients
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i data-lucide="mail" style="width:20px;height:20px;"></i>
+                            </div>
+                            <div class="info-content">
+                                <h4>Email Us Directly</h4>
+                                <p><a href="mailto:pullupsolutionsindia@gmail.com">pullupsolutionsindia@gmail.com</a></p>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i data-lucide="clock" style="width:20px;height:20px;"></i>
+                            </div>
+                            <div class="info-content">
+                                <h4>Response Time</h4>
+                                <p>Expect a reply within 4 business hours</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i data-lucide="calendar" style="width:20px;height:20px;"></i>
+                            </div>
+                            <div class="info-content">
+                                <h4>Consultation Duration</h4>
+                                <p>45-60 minute strategic sessions</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT SIDE - FORM -->
+                <div class="form-wrapper">
+                    <form id="contactForm" action="https://formspree.io/f/xykrljlp" method="POST">
+                        <div class="input-grid">
+                            <div class="input-wrapper">
+                                <input type="text" name="name" placeholder=" " required>
+                                <label>Full Name *</label>
+                            </div>
+                            <div class="input-wrapper">
+                                <input type="text" name="company" placeholder=" ">
+                                <label>Company Name</label>
+                            </div>
+                            <div class="input-wrapper">
+                                <input type="email" name="email" placeholder=" " required>
+                                <label>Email Address *</label>
+                            </div>
+                            <div class="input-wrapper">
+                                <input type="tel" name="phone" placeholder=" ">
+                                <label>Phone Number</label>
+                            </div>
+                            <div class="input-wrapper">
+                                <input type="url" name="website" placeholder=" ">
+                                <label>Website</label>
+                            </div>
+                            <div class="input-wrapper">
+                                <input type="text" name="industry" placeholder=" ">
+                                <label>Industry</label>
+                            </div>
+                        </div>
+                        <div class="input-wrapper">
+                            <textarea name="message" rows="5" placeholder=" " required></textarea>
+                            <label>Tell us about your business *</label>
+                        </div>
+                        <button class="btn primary-btn" type="submit">
+                            Send Inquiry
+                            <span class="arrow-icon">↗</span>
+                        </button>
+                        <p id="successMessage" class="success-message">
+                            ✓ Thank you for contacting PullUp. Our team will get back to you shortly.
+                        </p>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+     <footer class="footer">
+
+        <div class="container">
+
+
+            <div class="footer-main">
+
+
+                <!-- BRAND -->
+
+                <div class="footer-brand">
+
+                    
+<a href="index.html" class="footer-logo" aria-label="PullUp Solutions home">
+    <img src="./assests/images/logo.png" alt="PullUp Logo">
+    <span class="footer-brand-name">PullUp Solutions</span>
+</a>
+
+
+                    <p>
+                        Pulling businesses toward growth through strategy,
+                        branding, technology and innovation.
+                    </p>
+
+
+                    <a
+                        href="contact.html"
+                        class="footer-consultation"
+                    >
+                        Start a Conversation
+                        <i data-lucide="arrow-up-right"></i>
+                    </a>
+
+                </div>
+
+
+
+                <!-- COMPANY -->
+
+                <div class="footer-column">
+
+                    <h4>
+                        Company
+                    </h4>
+
+                    <a href="about.html">
+                        About
+                    </a>
+
+                    <a href="services.html">
+                        Services
+                    </a>
+
+                    <a href="industries.html">
+                        Industries
+                    </a>
+
+                     <a href="our-work.html">Our Work</a>
+
+                </div>
+
+
+
+                <!-- RESOURCES -->
+
+                <div class="footer-column">
+
+                    <h4>
+                        Resources
+                    </h4>
+
+                    <a href="insights.html">
+                        Insights
+                    </a>
+
+                    <a href="contact.html">
+                        Contact
+                    </a>
+
+                    <a href="#">
+                        Privacy Policy
+                    </a>
+
+                    <a href="#">
+                        Terms of Service
+                    </a>
+
+                </div>
+
+
+
+                <!-- CONNECT -->
+
+                <div class="footer-column footer-connect">
+
+                    <h4>
+                        Connect
+                    </h4>
+
+                    <a href="mailto:pullupsolutionsindia@gmail.com">
+                       pullupsolutionsindia@gmail.com
+                    </a>
+
+                    <div class="social-links">
+
+                         <a
+    href="https://www.linkedin.com/company/145331498/"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="PullUp Solutions on LinkedIn"
+    class="linkedin-link"
+>
+    <!-- Paste your SVG here -->
+    <svg xmlns="http://www.w3.org/2000/svg"
+         viewBox="0 0 128 128"
+         width="40"
+         height="40">
+        <path fill="#0076b2" d="M116 3H12a8.91 8.91 0 00-9 8.8v104.42a8.91 8.91 0 009 8.78h104a8.93 8.93 0 009-8.81V11.77A8.93 8.93 0 00116 3z"/>
+        <path fill="#fff" d="M21.06 48.73h18.11V107H21.06zm9.06-29a10.5 10.5 0 11-10.5 10.49 10.5 10.5 0 0110.5-10.49M50.53 48.73h17.36v8h.24c2.42-4.58 8.32-9.41 17.13-9.41C103.6 47.28 107 59.35 107 75v32H88.89V78.65c0-6.75-.12-15.44-9.41-15.44s-10.87 7.36-10.87 15V107H50.53z"/>
+    </svg>
+</a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="footer-bottom">
+
+                <p>
+                    © 2026 PullUp. All rights reserved.
+                </p>
+
+                <p>
+                    Strategy • Branding • AI • Growth
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <script>
+document.addEventListener("DOMContentLoaded", () => {
+    const hamburger = document.querySelector(".hamburger");
+    const navLinks = document.querySelector(".nav-links");
+    if (hamburger) {
+        hamburger.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+            hamburger.classList.toggle("active");
+        });
+    }
+    document.querySelectorAll(".nav-links a").forEach(link => {
+        link.addEventListener("click", () => {
+            navLinks.classList.remove("active");
+        });
+    });
+
+    const form = document.getElementById("contactForm");
+    const success = document.getElementById("successMessage");
+    if (form) {
+        form.addEventListener("submit", function () {
+            setTimeout(() => {
+                success.style.display = "block";
+                form.reset();
+            }, 1200);
+        });
+    }
+});
+    </script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>lucide.createIcons();</script>
+
+</body>
+
+</html>
