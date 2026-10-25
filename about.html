@@ -2069,7 +2069,140 @@
 }
 
 
-    </style>
+    
+/* =========================================================
+   RESPONSIVE FIXES — tablet widths (including 960px), mobile
+   Keep the original PullUp design; prevent grid and orbit overflow.
+========================================================= */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { width: 100%; max-width: 100%; }
+body { overflow-x: clip; }
+.container { width: min(92%, var(--max-width)); }
+.hero-layout > *, .story-grid > *, .perspective-grid > *,
+.footer-main > *, .mvv-grid > *, .principles-grid > * { min-width: 0; }
+img, svg { max-width: 100%; }
+.hero-title, .story-title, .section-title, .perspective-content h2,
+.cta-content h2 { overflow-wrap: anywhere; }
+.hero-title { letter-spacing: clamp(-4px, -0.35vw, -1.5px); }
+.hero-actions { flex-wrap: wrap; }
+.visual-pill { max-width: 45%; }
+.visual-pill { white-space: normal; }
+.footer-connect > a { overflow-wrap: anywhere; }
+
+/* Fix the 960px/tablet range before the original mobile breakpoint. */
+@media (min-width: 851px) and (max-width: 1100px) {
+  .navbar { gap: 14px; }
+  .logo img { height: 42px; }
+  .brand-name { font-size: 12px; }
+  .nav-links { gap: clamp(10px, 1.5vw, 18px); }
+  .nav-links a { font-size: 11px; }
+  .nav-cta { padding: 11px 16px; font-size: 12px; white-space: nowrap; }
+  .hero-layout { grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr); gap: 28px; }
+  .about-hero { min-height: auto; padding: 150px 0 75px; }
+  .hero-title { font-size: clamp(42px, 5.1vw, 58px); }
+  .about-visual { min-height: 420px; }
+  .visual-background { width: min(37vw, 390px); height: min(37vw, 390px); }
+  .visual-core { width: 205px; height: 205px; }
+  .visual-pill { padding: 10px 12px; font-size: 11px; }
+  .story-grid { grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 42px; }
+  .perspective-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 35px; }
+  .perspective-visual { min-height: 420px; }
+  .orbit-two { width: min(34vw, 350px); height: min(34vw, 350px); }
+  .orbit-one { width: min(28vw, 290px); height: min(28vw, 290px); }
+  .orbit-three { width: min(20vw, 190px); height: min(20vw, 190px); }
+  .orbit-label { padding: 8px 10px; font-size: 10px; }
+  .mvv-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .mvv-card { padding: 24px; }
+  .principles-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .footer-main { grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 1fr)); gap: 24px; }
+}
+
+/* Tablet and small laptop layout */
+@media (max-width: 850px) {
+  .header { top: 0; }
+  .navbar { height: 70px; gap: 12px; }
+  .logo { align-items: flex-start; }
+  .logo img { height: 40px; }
+  .brand-name { font-size: 12px; }
+  .nav-links {
+    top: 70px; left: 0; right: 0;
+    max-height: calc(100vh - 80px); overflow-y: auto;
+    z-index: 1000;
+  }
+  .about-hero { min-height: auto; padding: 130px 0 70px; }
+  .hero-layout { grid-template-columns: minmax(0, 1fr); gap: 28px; text-align: center; }
+  .hero-copy { max-width: 700px; margin: 0 auto; }
+  .hero-badge { max-width: 100%; white-space: normal; }
+  .hero-title { font-size: clamp(42px, 7vw, 60px); line-height: 1.04; }
+  .hero-text { margin-inline: auto; }
+  .hero-actions { justify-content: center; }
+  .about-visual { min-height: 420px; }
+  .visual-background { width: min(390px, 72vw); height: min(390px, 72vw); }
+  .story-grid, .perspective-grid { grid-template-columns: minmax(0, 1fr); gap: 35px; }
+  .story-grid { gap: 25px; }
+  .perspective-visual { min-height: 420px; }
+  .orbit-two { width: min(350px, 72vw); height: min(350px, 72vw); }
+  .orbit-one { width: min(270px, 58vw); height: min(270px, 58vw); }
+  .orbit-three { width: min(180px, 40vw); height: min(180px, 40vw); }
+  .mvv-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .principles-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .footer-main { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 24px; }
+}
+
+/* Phones */
+@media (max-width: 600px) {
+  .container { width: min(90%, 520px); }
+  .section { padding: 70px 0; }
+  .about-hero { padding: 120px 0 55px; }
+  .hero-title { font-size: clamp(36px, 10vw, 45px); letter-spacing: -1.8px; }
+  .hero-text { font-size: 14px; }
+  .hero-actions { align-items: stretch; flex-direction: column; gap: 14px; }
+  .hero-actions .btn, .hero-actions .text-link { width: 100%; justify-content: center; }
+  .about-visual { min-height: 330px; }
+  .visual-background { width: min(285px, 76vw); height: min(285px, 76vw); }
+  .visual-core { width: 155px; height: 155px; }
+  .visual-core-icon { width: 48px; height: 48px; margin-bottom: 10px; }
+  .visual-core h3 { font-size: 18px; }
+  .visual-core p { font-size: 8px; letter-spacing: .5px; text-align: center; padding: 0 8px; }
+  .visual-pill { max-width: 46%; padding: 8px 9px; gap: 5px; font-size: 9px; border-radius: 11px; }
+  .visual-pill svg { width: 14px; }
+  .pill-one { left: 0; top: 8%; }
+  .pill-two { right: 0; top: 15%; }
+  .pill-three { left: 0; bottom: 10%; }
+  .pill-four { right: 0; bottom: 7%; }
+  .story-title, .section-title, .perspective-content h2 { font-size: clamp(32px, 8vw, 42px); letter-spacing: -1.5px; }
+  .story-content { padding-left: 18px; }
+  .story-lead { font-size: 18px; }
+  .mvv-grid, .principles-grid { grid-template-columns: minmax(0, 1fr); }
+  .mvv-card, .principle-card { min-height: auto; padding: 25px; }
+  .perspective-visual { min-height: 330px; }
+  .orbit-two { width: min(285px, 78vw); height: min(285px, 78vw); }
+  .orbit-one { width: min(220px, 60vw); height: min(220px, 60vw); }
+  .orbit-three { width: min(145px, 40vw); height: min(145px, 40vw); }
+  .perspective-center { width: 112px; height: 112px; }
+  .orbit-label { padding: 7px 9px; font-size: 9px; }
+  .label-brand { right: 0; }
+  .label-growth { left: 0; }
+  .cta-section { padding: 55px 0; }
+  .cta-box { padding: 55px 20px; border-radius: 24px; }
+  .cta-content h2 { font-size: clamp(32px, 8vw, 40px); letter-spacing: -1.5px; }
+  .footer { padding-top: 55px; }
+  .footer-main { grid-template-columns: minmax(0, 1fr); gap: 30px; padding-bottom: 40px; }
+  .footer-brand p { max-width: none; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 8px; }
+}
+
+/* Respect reduced-motion preferences. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+</style>
 
 </head>
 

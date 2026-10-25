@@ -1988,6 +1988,325 @@
     transform: translateY(-3px);
 }
 
+    
+/* =====================================================
+   RESPONSIVE PATCH — SERVICES PAGE
+   Keeps the existing visual design while preventing
+   horizontal overflow on phones and small tablets.
+===================================================== */
+html, body {
+    max-width: 100%;
+    overflow-x: clip;
+}
+.container,
+.hero-content,
+.process-layout,
+.footer-main,
+.services-grid,
+.why-grid,
+.service-card,
+.why-card,
+.process-content,
+.hero-copy {
+    min-width: 0;
+}
+img, svg {
+    max-width: 100%;
+}
+.hero-title,
+.section-title,
+.process-content h2,
+.cta-content h2 {
+    overflow-wrap: anywhere;
+}
+.footer-main {
+    grid-template-columns: minmax(0, 1.7fr) repeat(3, minmax(0, 1fr));
+}
+@media (max-width: 1000px) {
+    .hero-content {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 28px;
+    }
+    .hero-copy {
+        width: 100%;
+    }
+    .ecosystem {
+        width: min(100%, 500px);
+        margin: 8px auto 0;
+    }
+    .process-layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 35px;
+    }
+    .process-visual {
+        min-height: 420px;
+    }
+    .footer-main {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 36px 28px;
+    }
+}
+@media (max-width: 760px) {
+    .container {
+        width: min(92%, 600px);
+    }
+    .header .navbar {
+        height: 68px;
+        top: 0;
+        gap: 12px;
+    }
+    .logo {
+        align-items: flex-start;
+        min-width: 0;
+    }
+    .logo img {
+        height: 36px;
+        width: auto;
+        max-width: 150px;
+    }
+    .brand-name {
+        font-size: 10px;
+    }
+    .nav-cta {
+        display: none;
+    }
+    .nav-links {
+        top: calc(100% + 8px);
+        left: 0;
+        right: 0;
+        width: 100%;
+        max-height: calc(100dvh - 90px);
+        overflow-y: auto;
+        gap: 2px;
+        z-index: 1000;
+    }
+    .hamburger {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 44px;
+        width: 44px;
+        height: 44px;
+    }
+    .services-hero {
+        min-height: auto;
+        padding: 125px 0 52px;
+    }
+    .hero-content {
+        gap: 26px;
+    }
+    .hero-label {
+        max-width: 100%;
+        font-size: 10px;
+        letter-spacing: 1px;
+        margin-bottom: 18px;
+    }
+    .hero-title {
+        font-size: clamp(36px, 9vw, 54px);
+        line-height: 1.04;
+        letter-spacing: -1.8px;
+        margin-bottom: 20px;
+    }
+    .hero-description {
+        font-size: 15px;
+        line-height: 1.7;
+        margin-bottom: 24px;
+    }
+    .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        gap: 11px;
+    }
+    .hero-buttons .btn {
+        width: 100%;
+        min-height: 48px;
+    }
+    .ecosystem {
+        width: min(100%, 430px);
+        aspect-ratio: 1 / 1;
+        transform: none;
+        margin: 0 auto;
+    }
+    .eco-center {
+        width: clamp(94px, 27vw, 125px);
+        height: clamp(94px, 27vw, 125px);
+        padding: 8px;
+        text-align: center;
+    }
+    .eco-center strong {
+        font-size: 15px;
+    }
+    .eco-center small {
+        font-size: 9px;
+    }
+    .eco-node {
+        width: clamp(76px, 22vw, 100px);
+        min-height: 72px;
+        padding: 8px 5px;
+        gap: 5px;
+        border-radius: 14px;
+    }
+    .eco-node i {
+        width: 19px;
+        height: 19px;
+    }
+    .eco-node span {
+        font-size: 10px;
+        line-height: 1.25;
+    }
+    .node-2, .node-3 { right: 0; }
+    .node-5, .node-6 { left: 0; }
+    .section {
+        padding: 64px 0;
+    }
+    .section-heading {
+        margin-bottom: 30px;
+    }
+    .section-title,
+    .process-content h2 {
+        font-size: clamp(30px, 7.5vw, 42px);
+        line-height: 1.12;
+        letter-spacing: -1.2px;
+    }
+    .section-description {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+    .services-grid,
+    .why-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
+    }
+    .service-card {
+        min-height: 0;
+        padding: 25px 22px;
+    }
+    .service-icon {
+        margin-bottom: 20px;
+    }
+    .service-card h3 {
+        font-size: 19px;
+    }
+    .process-visual {
+        min-height: 320px;
+        overflow: hidden;
+    }
+    .process-ring {
+        width: min(68vw, 230px);
+        height: min(68vw, 230px);
+    }
+    .process-ring::before { inset: 25px; }
+    .process-ring::after { inset: 52px; }
+    .process-core {
+        width: 98px;
+        height: 98px;
+    }
+    .process-step {
+        width: 70px;
+        height: 70px;
+        gap: 4px;
+    }
+    .process-step span {
+        font-size: 9px;
+    }
+    .process-item {
+        gap: 12px;
+    }
+    .process-item > div:last-child {
+        min-width: 0;
+    }
+    .why-card {
+        padding: 24px;
+    }
+    .cta-section {
+        padding: 55px 0;
+    }
+    .cta-box {
+        padding: 42px 22px;
+        border-radius: 24px;
+    }
+    .cta-content h2 {
+        font-size: clamp(30px, 7.5vw, 42px);
+        letter-spacing: -1.2px;
+        line-height: 1.12;
+    }
+    .cta-content p {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+    .footer {
+        padding-top: 48px;
+    }
+    .footer-main {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 30px 20px;
+        padding-bottom: 38px;
+    }
+    .footer-brand {
+        grid-column: 1 / -1;
+    }
+    .footer-brand p {
+        margin: 16px 0 20px;
+    }
+    .footer-column {
+        min-width: 0;
+        gap: 12px;
+    }
+    .footer-column a {
+        overflow-wrap: anywhere;
+        font-size: 13px;
+    }
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 20px 0;
+    }
+}
+@media (max-width: 380px) {
+    .container {
+        width: 90%;
+    }
+    .hero-title {
+        font-size: 35px;
+        letter-spacing: -1.3px;
+    }
+    .ecosystem {
+        width: 100%;
+    }
+    .eco-node {
+        width: 72px;
+        min-height: 66px;
+        border-radius: 12px;
+    }
+    .eco-node span {
+        font-size: 9px;
+    }
+    .process-visual {
+        min-height: 285px;
+    }
+    .process-step {
+        width: 62px;
+        height: 62px;
+    }
+    .footer-main {
+        grid-template-columns: minmax(0, 1fr);
+    }
+    .footer-brand {
+        grid-column: auto;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
     </style>
 </head>
 
