@@ -31,6 +31,6 @@
 
 @media (max-width: 768px) {
     .header-consultancy-cta {
-        display: none;
+        display: none !important;
     }
 }
