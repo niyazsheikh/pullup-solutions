@@ -157,4 +157,9 @@
         font-weight: 700;
         border-radius: 10px;
     }
+
+    .header .nav-links a::after,
+    .header .nav-links a.active::after {
+        width: 0;
+    }
 }
