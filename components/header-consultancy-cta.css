@@ -95,23 +95,25 @@
     margin-top: 8px;
 }
 
-.footer-social-row > a[href^="mailto:"] {
+.footer-social-row > .footer-mail-link {
     align-items: center;
     border: 1px solid #334155;
     border-radius: 12px;
     display: inline-flex;
-    font-size: 0;
     height: 40px;
     justify-content: center;
     margin: 0 !important;
     width: 40px;
 }
 
-.footer-social-row > a[href^="mailto:"]::before {
-    color: currentColor;
-    content: "\2709";
-    font-size: 21px;
-    line-height: 1;
+.footer-social-row > .footer-mail-link svg {
+    fill: none;
+    height: 19px;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2;
+    width: 19px;
 }
 
 .footer-social-row > .social-links {
